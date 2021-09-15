@@ -1,0 +1,22 @@
+mvn clean package dockerfile:push
+
+docker run --rm -p 9003:9003 department-service-01:latest
+
+docker tag department-service-02 bolof2000/department-service-02
+
+docker run --name microservice -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=dept_service -e MYSQL_USER=sa -e MYSQL_PASSWORD=password -d mysql:latest
+
+ docker run --rm -p 9003:9003 --name depart-service  -d department-service
+
+ docker logs containername
+
+ docker build -t . department-service
+
+ docker tag department-service-test01 bharathirajatut/department-service-test01
+
+ spring.jpa.hibernate.ddl-auto=update
+ spring.datasource.url=jdbc:mysql://microservice:3306/dept_service?serverTimezone=UTC
+ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+ spring.datasource.username=sa
+ spring.datasource.password=password
+ server.port=9003
